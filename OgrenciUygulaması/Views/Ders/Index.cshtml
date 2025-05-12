@@ -1,0 +1,29 @@
+﻿@model IEnumerable<OgrenciUygulaması.Models.tDers>
+
+@{
+    ViewBag.Title = "Ders Listesi";
+}
+
+<h2>Ders Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Ders Ekle", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Ders Adı</th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.dersAd</td>
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.dersID }, new { @class = "btn btn-primary btn-sm" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.dersID }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+</table>

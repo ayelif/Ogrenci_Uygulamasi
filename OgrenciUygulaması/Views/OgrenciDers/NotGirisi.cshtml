@@ -1,0 +1,53 @@
+﻿@model List<OgrenciUygulaması.Models.OgrenciNotViewModel>
+
+<h2>@ViewBag.DersAdi - Not Girişi</h2>
+
+<!-- Ders Seçimi Formu (GET isteği için) -->
+@using (Html.BeginForm("NotGirisi", "OgrenciDers", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="dersId">Ders Seç</label>
+        @Html.DropDownList("dersId", (SelectList)ViewBag.Dersler, "Ders Seçiniz", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Dersin Öğrencilerini Göster</button>
+}
+
+
+@if (Model != null && Model.Any()) // Eğer Model doluysa
+{
+    <h2>@ViewBag.DersAdi - Not Girişi</h2>
+
+    <form method="post" action="@Url.Action("NotKaydet", "OgrenciDers")">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="dersId" value="@ViewBag.DersId" />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Öğrenci Adı Soyadı</th>
+                    <th>Vize</th>
+                    <th>Final</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].OgrenciAdSoyad)
+                            @Html.HiddenFor(modelItem => Model[i].OgrenciDersID)
+                            @Html.HiddenFor(modelItem => Model[i].OgrenciAdSoyad)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(modelItem => Model[i].Vize, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(modelItem => Model[i].Final, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-primary">Notları Kaydet</button>
+    </form>
+}

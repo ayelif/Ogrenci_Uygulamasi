@@ -1,0 +1,20 @@
+﻿
+@model OgrenciUygulaması.Models.tFakulte
+
+@{
+    ViewBag.Title = "Fakülte Ekle";
+}
+
+<h2>Fakülte Ekle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(model => model.fakulteAd)
+        @Html.EditorFor(model => model.fakulteAd)
+        @Html.ValidationMessageFor(model => model.fakulteAd)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Ekle</button>
+}

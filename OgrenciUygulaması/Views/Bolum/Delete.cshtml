@@ -1,0 +1,19 @@
+﻿@model OgrenciUygulaması.Models.tBolum
+
+@{
+    ViewBag.Title = "Bölüm Sil";
+}
+
+<h2>Bölüm Sil</h2>
+
+<h4>Silmek istediğinizden emin misiniz?</h4>
+<div>
+    <strong>Bölüm Adı:</strong> @Model.bolumAd
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Evet, Sil</button>
+    @Html.ActionLink("İptal", "Index", null, new { @class = "btn btn-secondary" })
+}

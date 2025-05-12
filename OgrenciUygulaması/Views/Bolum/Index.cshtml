@@ -1,0 +1,27 @@
+﻿@model IEnumerable<OgrenciUygulaması.Models.tBolum>
+
+<h2>Bölüm Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Bölüm Ekle", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>Bölüm Adı</th>
+        <th>Fakülte Adı</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.bolumAd</td>
+        <td>@item.Fakulte.fakulteAd</td>
+        <td>
+            @Html.ActionLink("Güncelle", "Edit", new { id = item.bolumID }) |
+            @Html.ActionLink("Detay", "Details", new { id = item.bolumID }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.bolumID })
+        </td>
+    </tr>
+}
+</table>

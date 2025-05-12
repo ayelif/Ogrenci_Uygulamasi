@@ -1,0 +1,47 @@
+﻿@model List<OgrenciUygulaması.Models.tOgrenciDers>
+
+@{
+    ViewBag.Title = "Öğrenciye Ait Dersleri Listele";
+}
+
+<h2>Öğrenciye Ait Dersleri Listele</h2>
+
+@using (Html.BeginForm("ListStudentCourses", "OgrenciDers", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="ogrenciID">Öğrenci Numarası</label>
+        <input type="number" class="form-control" id="ogrenciID" name="ogrenciID" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Dersleri Listele</button>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Mesaj as string))
+{
+    <div class="alert alert-warning">
+        @ViewBag.Mesaj
+    </div>
+}
+
+@if (Model != null && Model.Any())
+{
+    <h3>Ders Listesi:</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Ders Adı</th>
+                <th>Yıl</th>
+                <th>Yarıyıl</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Ders.dersAd</td>
+                    <td>@item.yil</td>
+                    <td>@item.yariyil</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

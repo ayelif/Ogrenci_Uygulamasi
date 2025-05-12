@@ -1,0 +1,47 @@
+﻿@model List<OgrenciUygulaması.Models.DersSecimDurumuViewModel>
+
+@{
+    ViewBag.Title = "Ders Seçim Durumu";
+}
+
+<h2>Ders Seçim Durumu</h2>
+
+@using (Html.BeginForm("CoursesByYearList", "OgrenciDers", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="yil">Yıl</label>
+        <input type="number" class="form-control" id="yil" name="yil" required />
+    </div>
+
+    <div class="form-group">
+        <label for="yariyil">Yarıyıl</label>
+        <input type="text" class="form-control" id="yariyil" name="yariyil" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Derslerin Seçim Durumunu Görüntüle</button>
+}
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ders Adı</th>
+                <th>Seçilen Öğrenci Sayısı</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.DersAdı</td>
+                    <td>@item.SecilenOgrenciSayisi</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+
+}

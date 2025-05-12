@@ -1,0 +1,36 @@
+﻿@model OgrenciUygulaması.Models.tOgrenci
+
+@{
+    ViewBag.Title = "Öğrenci Detay";
+}
+
+<h2>Öğrenci Detay</h2>
+
+<div>
+    <h4>tOgrenci</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ad)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.soyad)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.soyad)
+        </dd>
+        <dt>
+            Bölüm
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bolum.bolumAd)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.ogrenciID }) |
+    @Html.ActionLink("Listeye Dön", "Index")
+</p>

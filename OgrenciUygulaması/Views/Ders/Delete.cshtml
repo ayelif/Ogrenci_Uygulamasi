@@ -1,0 +1,19 @@
+﻿@model OgrenciUygulaması.Models.tDers
+
+@{
+    ViewBag.Title = "Ders Sil";
+}
+
+<h2>Ders Sil</h2>
+
+<h4>Silmek istediğinizden emin misiniz?</h4>
+<div>
+    <strong>Ders Adı:</strong> @Model.dersAd
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Evet, Sil</button>
+    @Html.ActionLink("İptal", "Index", null, new { @class = "btn btn-secondary" })
+}

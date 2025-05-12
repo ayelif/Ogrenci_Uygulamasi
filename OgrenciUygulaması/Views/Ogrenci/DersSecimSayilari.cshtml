@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Yıl ve Yarıyıla Göre Ders Seçim Sayıları";
+}
+
+<h2>Yıl ve Yarıyıla Göre Ders Seçim Sayıları</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label>Yıl</label>
+        <input type="number" name="yil" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Yarıyıl</label>
+        <input type="number" name="yariyil" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Listele</button>
+}
+
+@if (ViewBag.Sonuclar != null)
+{
+    <h4>@ViewBag.Yil - @ViewBag.Yariyil Yarıyılı Sonuçları</h4>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Ders Adı</th>
+                <th>Seçen Öğrenci Sayısı</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Sonuclar)
+            {
+                <tr>
+                    <td>@item.DersAdi</td>
+                    <td>@item.OgrenciSayisi</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

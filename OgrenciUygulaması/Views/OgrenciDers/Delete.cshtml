@@ -1,0 +1,22 @@
+﻿@model OgrenciUygulaması.Models.tOgrenciDers
+
+@{
+    ViewBag.Title = "Ders Sil";
+}
+
+<h2>Ders Silme İşlemi</h2>
+
+<h4>Silmek istediğinizden emin misiniz?</h4>
+<div>
+    <strong>Öğrenci Adı:</strong> @Model.Ogrenci.ad <br />
+    <strong>Ders Adı:</strong> @Model.Ders.dersAd <br />
+    <strong>Yıl:</strong> @Model.yil <br />
+    <strong>Yarıyıl:</strong> @Model.yariyil
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Evet, Sil</button>
+    @Html.ActionLink("İptal", "Index", null, new { @class = "btn btn-secondary" })
+}

@@ -1,0 +1,22 @@
+﻿@model OgrenciUygulaması.Models.tBolum
+
+@{
+    ViewBag.Title = "Bölüm Güncelle";
+}
+
+<h2>Bölüm Güncelle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.bolumID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bolumAd)
+        @Html.TextBoxFor(model => model.bolumAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.bolumAd)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+    @Html.ActionLink("Geri Dön", "Index", null, new { @class = "btn btn-secondary" })
+}

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<OgrenciUygulaması.Models.tOgrenciDers>
+
+<h2>Öğrencilerin Dersleri</h2>
+
+<p>
+    @Html.ActionLink("Yeni Ders Atama", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>Öğrenci Adı</th>
+        <th>Ders Adı</th>
+        <th>Yıl</th>
+        <th>Yarıyıl</th>
+        <th>Vize</th>
+        <th>Final</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.Ogrenci.ad @item.Ogrenci.soyad</td>
+        <td>@item.Ders.dersAd</td>
+        <td>@item.yil</td>
+        <td>@item.yariyil</td>
+        <td>@item.vize</td>
+        <td>@item.final</td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Detay", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
+</table>

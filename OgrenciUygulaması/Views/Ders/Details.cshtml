@@ -1,0 +1,26 @@
+﻿@model OgrenciUygulaması.Models.tDers
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tDers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dersAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dersAd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.dersID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

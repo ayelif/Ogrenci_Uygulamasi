@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Öğrenciye Ait Dersler";
+}
+
+<h2>Öğrenciye Ait Dersler</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.Label("Öğrenci Seçin")
+        @Html.DropDownList("ogrenciID", (SelectList)ViewBag.Ogrenciler, "Seçiniz", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Listele</button>
+}
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Ders Adı</th>
+                <th>Yıl</th>
+                <th>Yarıyıl</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.tDers.dersAdi</td>
+                    <td>@item.yil</td>
+                    <td>@item.yariyil</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

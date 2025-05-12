@@ -1,0 +1,21 @@
+﻿@model OgrenciUygulaması.Models.tDers
+
+@{
+    ViewBag.Title = "Yeni Ders Ekle";
+}
+
+<h2>Yeni Ders Ekle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.dersAd)
+        @Html.TextBoxFor(m => m.dersAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.dersAd)
+    </div>
+
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    @Html.ActionLink("Geri Dön", "Index", null, new { @class = "btn btn-secondary" })
+}
